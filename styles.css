@@ -87,6 +87,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #121212;
@@ -101,10 +102,21 @@ body {
     margin-left: auto;
     text-align: left;
     margin-top: 30px;
+    margin-right: 15px;
 }
 .wheel-container {
     position: relative;
+    margin-top: 4%;
     margin-left: 30%;
+}
+.curved-text-image {
+    position: absolute;
+    top: 17.5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 500px;
+    z-index: 10;
+    pointer-events: none;
 }
 canvas {
     border-radius: 50%;
@@ -112,7 +124,7 @@ canvas {
 }
 .insideBox {
     background: #1D1D1D;
-    width: 500px;
+    width: 475px;
     height: 800px;
     display: flex;
     flex-direction: column;
@@ -156,8 +168,8 @@ canvas {
 }
 
 textarea {
-    width: 450px;
     height: 600px;
+    max-width: 425px;
     padding: 10px;
     font-size: 16px;
     color: #FFFFFF;

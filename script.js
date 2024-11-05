@@ -108,6 +108,8 @@ function spin() {
     const spinSpeed = 0.15;
     const startTime = Date.now();
 
+    document.querySelector('.curved-text-image').style.display = 'none';
+
     function animate() {
         const elapsed = Date.now() - startTime;
         spinAngle += spinSpeed;
