@@ -5,9 +5,12 @@ const ctx = canvas.getContext("2d");
 let spinning = false;
 let spinAngle = 0;
 let segmentAngle = 0;
-const centerX = 250;
-const centerY = 250;
-const radius = 250;
+const centerX = 380;
+const centerY = 380;
+const radius = 465;
+canvas.width = 765;
+canvas.height = 765; 
+let animationFrameId;
 
 function toggleTab(tab) {
     const entriesTab = document.getElementById("entriesTab");
@@ -37,6 +40,8 @@ function loadNames() {
     segmentAngle = (2 * Math.PI) / names.length;
     updateEntryCount();
     drawWheel();
+    
+    spinInitialAnimation();
 }
 
 function drawWheel() {
@@ -60,24 +65,47 @@ function drawWheel() {
         ctx.rotate(angle + segmentAngle / 2);
         ctx.textAlign = "center";
         ctx.fillStyle = i % 2 === 0 ? "#000000" : "#FFFFFF";
-        ctx.font = "30px Arial";
-        ctx.fillText(names[i], radius * 0.5, 10);
+        ctx.font = "85px 'Quicksand', sans-serif";
+        ctx.fillText(names[i], radius * 0.5, 25);
         ctx.restore();
     }
 
     ctx.beginPath();
-    ctx.arc(centerX, centerY, 50, 0, 2 * Math.PI);
+    ctx.arc(centerX, centerY, 80, 0, 2 * Math.PI);
     ctx.fillStyle = "#FFFFFF";
     ctx.fill();
     ctx.closePath();
 }
+
+function spinInitialAnimation() {
+    if (spinning || names.length === 0) return;
+
+    spinning = true;
+    const spinSpeed = 0.005;
+
+    function animate() {
+        spinAngle += spinSpeed;
+        drawWheelAtAngle(spinAngle);
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    animate();
+}
+
+canvas.addEventListener("click", function() {
+    if (spinning) {
+        cancelAnimationFrame(animationFrameId);
+        spinning = false;
+        spin();
+    }
+});
 
 function spin() {
     if (spinning || names.length === 0) return;
 
     spinning = true;
     const spinTime = 3000;
-    const spinSpeed = 0.1;
+    const spinSpeed = 0.15;
     const startTime = Date.now();
 
     function animate() {
