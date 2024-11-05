@@ -132,3 +132,9 @@ function updateWinnerCount() {
 }
 
 document.getElementById("entriesBox").addEventListener("input", loadNames);
+
+window.onload = function() {
+    const defaultNames = "LIGHT\nDARK\nLIGHT\nDARK\nLIGHT\nDARK";
+    document.getElementById("entriesBox").value = defaultNames;
+    loadNames();
+};
