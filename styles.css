@@ -94,14 +94,80 @@ body {
 .container {
     display: flex;
     align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+.entry-box {
+    margin-left: auto;
+    text-align: left;
+    margin-top: 30px;
 }
 .wheel-container {
     position: relative;
+    margin-left: 30%;
 }
 canvas {
     border-radius: 50%;
     cursor: pointer;
 }
+.insideBox {
+    background: #1D1D1D;
+    width: 500px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 27.5px;
+}
+
+.control-button {
+    background-color: #424242;
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.control-button:hover {
+    background-color: #545454;
+}
+
+.checkbox-label {
+    color: #DCDCDC;
+    display: flex;
+    align-items: center;
+}
+
+.advanced-checkbox {
+    margin-right: 5px;
+}
+
+textarea {
+    width: 450px;
+    height: 600px;
+    padding: 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #1D1D1D;
+    resize: none;
+    border: 1px solid;
+    border-color: #777;
+    border-radius: 4px;
+}
+
 .arrow {
     position: absolute;
     top: 50%;
@@ -128,10 +194,7 @@ canvas {
     transform: translate(2px, 2px);
     filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.9));
 }
-.entry-box {
-    margin-left: 50px;
-    text-align: left;
-}
+
 textarea {
     width: 200px;
     height: 300px;
@@ -141,13 +204,14 @@ textarea {
 }
 .tabs {
     position: relative;
-    display: flex;
+    display: inline-block;
 }
 .tabs button {
     flex: 1;
     padding: 10px;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
+    line-height: 1.715em;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -175,10 +239,29 @@ textarea {
     left: 0;
 }
 .entry-box textarea {
-    width: 200px;
-    height: 300px;
+    width: 450px;
+    height: 600px;
     margin-top: 10px;
     padding: 10px;
     font-size: 16px;
+    color: #FFFFFF;
+    background: #1D1D1D;
+    resize: none;
+    border: 1px solid;
+    border-color: #777;
+    border-radius: 4px;
 }
-
+#entriesCount{
+    border-radius: 12px;
+    padding: 2px 6px;
+    background: #777;
+    font-weight: normal;
+    font-size: 14px;
+}
+#resultsCount{
+    border-radius: 12px;
+    padding: 2px 6px;
+    background: #777;
+    font-weight: normal;
+    font-size: 14px;
+}
