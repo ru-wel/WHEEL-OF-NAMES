@@ -1,0 +1,88 @@
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+}
+.container {
+    display: flex;
+    align-items: center;
+}
+.wheel-container {
+    position: relative;
+}
+canvas {
+    border: 2px solid #333;
+    border-radius: 50%;
+    background-color: #ffffff;
+    cursor: pointer;
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-right: 30px solid #BBBBBB;
+}
+.entry-box {
+    margin-left: 20px;
+    text-align: left;
+}
+textarea {
+    width: 200px;
+    height: 300px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+.tabs {
+    position: relative;
+    display: flex;
+}
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    color: #DCDCDC;
+}
+.tabs button.active {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.tabs button span {
+    font-weight: bold;
+    margin-left: 5px;
+}
+.underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 50%;
+    background-color: white;
+    transition: left 0.3s ease;
+}
+.tabs #underline {
+    left: 0;
+}
+.entry-box textarea {
+    width: 200px;
+    height: 300px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+

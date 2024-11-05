@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Names</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="wheel-container">
+            <canvas id="wheelCanvas" width="500" height="500" onclick="spin()"></canvas>
+            <div class="arrow"></div>
+        </div>
+        <div class="entry-box">
+            <div class="tabs">
+                <button id="entriesTab" onclick="toggleTab('entries')" class="active">
+                    Entries <span id="entriesCount">0</span>
+                </button>
+                <button id="resultsTab" onclick="toggleTab('results')">
+                    Results <span id="resultsCount">0</span>
+                </button>
+                <div id="underline" class="underline"></div>
+            </div>
+            <div id="entriesBoxContainer">
+                <textarea id="entriesBox" placeholder="Enter names, one per line"></textarea>
+            </div>
+            <div id="resultsBoxContainer" style="display: none;">
+                <textarea id="resultsBox" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
