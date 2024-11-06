@@ -1,2 +1,1 @@
-# WHEEL-OF-NAMES
-# 25k all the way
+# [WHEEL-OF-NAMES](https://wheelofnames.com/)
