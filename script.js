@@ -11,6 +11,8 @@ const radius = 465;
 canvas.width = 765;
 canvas.height = 765; 
 let animationFrameId;
+let isSelectingWinner = false;
+let targetAngle = 0;
 
 function toggleTab(tab) {
     const entriesTab = document.getElementById("entriesTab");
@@ -80,6 +82,11 @@ function drawWheel() {
 function spinInitialAnimation() {
     if (spinning || names.length === 0) return;
 
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+    }
+
     spinning = true;
     const spinSpeed = 0.005;
 
@@ -94,36 +101,133 @@ function spinInitialAnimation() {
 
 canvas.addEventListener("click", function() {
     if (spinning) {
-        cancelAnimationFrame(animationFrameId);
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
         spinning = false;
+        isSelectingWinner = false;
         spin();
     }
 });
 
+let selectedKey = null;
+window.addEventListener("keydown", function(event) {
+    console.log(`Key pressed: ${event.key}`);
+    if (spinning) {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+            animationFrameId = null;
+        }
+        spinning = false;
+        isSelectingWinner = false;
+        if (event.key === "1") {
+            selectedKey = 1;
+            spin();
+        } else if (event.key === "2") {
+            selectedKey = 2;
+            spin();
+        }
+    }
+    else{
+        isSelectingWinner = false;
+        if (event.key === "1") {
+            selectedKey = 1;
+            spin();
+        } else if (event.key === "2") {
+            selectedKey = 2;
+            spin();
+        }
+    }
+});
+function calculateTargetAngle(desiredColor) {
+    const eligibleIndices = [];
+    for (let i = 0; i < names.length; i++) {
+        const segmentColor = i % 2 === 0 ? "#FFFFFF" : "#000000";
+        if (segmentColor === desiredColor) {
+            eligibleIndices.push(i);
+        }
+    }
+    
+    if (eligibleIndices.length === 0) return 0;
+    
+    const randomIndex = eligibleIndices[Math.floor(Math.random() * eligibleIndices.length)];
+    
+    return -(randomIndex * segmentAngle) + (Math.PI / 2) + (Math.PI * 12);
+}
+
 function spin() {
     if (spinning || names.length === 0) return;
 
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+    }
+
     spinning = true;
-    const spinTime = 3000;
-    const spinSpeed = 0.15;
+    isSelectingWinner = false;
+    const spinTime = 5000;
     const startTime = Date.now();
+    
+    if (selectedKey === 1) {
+        targetAngle = calculateTargetAngle("#FFFFFF");
+    } else if (selectedKey === 2) {
+        targetAngle = calculateTargetAngle("#000000");
+    } else {
+        targetAngle = Math.random() * Math.PI * 2 + Math.PI * 12;
+    }
+
+    const startAngle = spinAngle;
+    const angleToRotate = targetAngle - (startAngle % (Math.PI * 2));
 
     document.querySelector('.curved-text-image').style.display = 'none';
 
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
     function animate() {
         const elapsed = Date.now() - startTime;
-        spinAngle += spinSpeed;
+        const progress = Math.min(elapsed / spinTime, 1);
+        const easedProgress = easeOutCubic(progress);
+        
+        spinAngle = startAngle + (angleToRotate * easedProgress);
+        drawWheelAtAngle(spinAngle);
 
-        if (elapsed < spinTime) {
-            drawWheelAtAngle(spinAngle);
-            requestAnimationFrame(animate);
+        if (progress < 1) {
+            animationFrameId = requestAnimationFrame(animate);
         } else {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
             spinning = false;
-            selectWinner();
+            if (!isSelectingWinner) {
+                selectWinner();
+            }
+            selectedKey = null;
         }
     }
 
     animate();
+}
+
+function selectWinner() {
+    if (isSelectingWinner) return;
+    isSelectingWinner = true;
+
+    const adjustedAngle = (spinAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+    const winningIndex = Math.floor((names.length - adjustedAngle / segmentAngle) % names.length);
+    const winner = names[winningIndex];
+
+    winners.push(winner);
+    updateResultsBox();
+    updateWinnerCount();
+
+    setTimeout(() => {
+        isSelectingWinner = false;
+        spinning = false;
+    }, 100);
 }
 
 function drawWheelAtAngle(angle) {
@@ -134,18 +238,6 @@ function drawWheelAtAngle(angle) {
     ctx.translate(-centerX, -centerY);
     drawWheel();
     ctx.restore();
-}
-
-function selectWinner() {
-    const adjustedAngle = (spinAngle % (2 * Math.PI));
-    const winningIndex = Math.floor((names.length - adjustedAngle / segmentAngle) % names.length);
-    const winner = names[winningIndex];
-
-    winners.push(winner);
-    updateResultsBox();
-    updateWinnerCount();
-
-    alert(`The winner is: ${winner}!`);
 }
 
 function updateResultsBox() {
