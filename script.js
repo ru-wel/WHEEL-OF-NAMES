@@ -107,13 +107,11 @@ canvas.addEventListener("click", function() {
         }
         spinning = false;
         isSelectingWinner = false;
-        spin();
     }
+    spin();
 });
 
-let selectedKey = null;
 window.addEventListener("keydown", function(event) {
-    console.log(`Key pressed: ${event.key}`);
     if (spinning) {
         if (animationFrameId) {
             cancelAnimationFrame(animationFrameId);
@@ -121,60 +119,29 @@ window.addEventListener("keydown", function(event) {
         }
         spinning = false;
         isSelectingWinner = false;
-        if (event.key === "1") {
-            selectedKey = 1;
-            spin();
-        } else if (event.key === "2") {
-            selectedKey = 2;
-            spin();
-        }
     }
-    else{
-        isSelectingWinner = false;
-        if (event.key === "1") {
-            selectedKey = 1;
-            spin();
-        } else if (event.key === "2") {
-            selectedKey = 2;
-            spin();
-        }
+
+    if (event.key === "1") {
+        spinToColor(true);
+    } else if (event.key === "2") {
+        spinToColor(false);
     }
 });
-function calculateTargetAngle(desiredColor) {
-    const eligibleIndices = [];
-    for (let i = 0; i < names.length; i++) {
-        const segmentColor = i % 2 === 0 ? "#FFFFFF" : "#000000";
-        if (segmentColor === desiredColor) {
-            eligibleIndices.push(i);
-        }
-    }
-    
-    if (eligibleIndices.length === 0) return 0;
-    
-    const randomIndex = eligibleIndices[Math.floor(Math.random() * eligibleIndices.length)];
-    
-    return -(randomIndex * segmentAngle) + (Math.PI / 2) + (Math.PI * 12);
-}
 
-function spin() {
+function spinToColor(isWhite) {
     if (spinning || names.length === 0) return;
-
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-    }
-
+    
     spinning = true;
     isSelectingWinner = false;
     const spinTime = 5000;
     const startTime = Date.now();
+
+    targetAngle = Math.random() * Math.PI * 2 + Math.PI * 12;
+    const adjustedAngle = (targetAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+    const segmentIndex = Math.floor((names.length - adjustedAngle / segmentAngle) % names.length);
     
-    if (selectedKey === 1) {
-        targetAngle = calculateTargetAngle("#FFFFFF");
-    } else if (selectedKey === 2) {
-        targetAngle = calculateTargetAngle("#000000");
-    } else {
-        targetAngle = Math.random() * Math.PI * 2 + Math.PI * 12;
+    if ((segmentIndex % 2 === 0) !== isWhite) {
+        targetAngle += segmentAngle;
     }
 
     const startAngle = spinAngle;
@@ -205,7 +172,49 @@ function spin() {
             if (!isSelectingWinner) {
                 selectWinner();
             }
-            selectedKey = null;
+        }
+    }
+
+    animate();
+}
+
+function spin() {
+    if (spinning || names.length === 0) return;
+
+    spinning = true;
+    isSelectingWinner = false;
+    const spinTime = 5000;
+    const startTime = Date.now();
+    
+    targetAngle = Math.random() * Math.PI * 2 + Math.PI * 12;
+    const startAngle = spinAngle;
+    const angleToRotate = targetAngle - (startAngle % (Math.PI * 2));
+
+    document.querySelector('.curved-text-image').style.display = 'none';
+
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+
+    function animate() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / spinTime, 1);
+        const easedProgress = easeOutCubic(progress);
+        
+        spinAngle = startAngle + (angleToRotate * easedProgress);
+        drawWheelAtAngle(spinAngle);
+
+        if (progress < 1) {
+            animationFrameId = requestAnimationFrame(animate);
+        } else {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+                animationFrameId = null;
+            }
+            spinning = false;
+            if (!isSelectingWinner) {
+                selectWinner();
+            }
         }
     }
 
