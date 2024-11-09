@@ -143,6 +143,7 @@ i{
     pointer-events: none;
     width: 65%;
     height: auto;
+    max-height: 100%;
 }
 
 canvas {
@@ -177,7 +178,13 @@ canvas {
     transform: translate(2px, 2px);
     filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.9));
 }
+@media only screen and (max-width: 1526px) and (min-width: 900px) {
+    .curved-text-image{
+        padding-top: 15%;
+        top: auto;
+    }
 
+}
 @media only screen and (max-width: 899px) { 
     .container{
         flex-direction: column;
@@ -283,9 +290,11 @@ canvas {
     /* display: flex;
     flex-direction: column;
     align-items: center; */
+    height: 94%;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 1px 3px #fff3,0 1px 1px #ffffff24,0 2px 1px -1px #ffffff1f;
+    max-height: 90%;
 }
 
 .controls {
@@ -376,7 +385,10 @@ input[type=checkbox] {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
 }
-
+.spacing1{
+    height: 210px;
+    max-width: 80%;
+}
 
 @media only screen and (max-width: 899px) { 
     .entry-box{
@@ -388,6 +400,15 @@ input[type=checkbox] {
     .entry-box textarea{
         width: 800px;
         max-width: 95%;
+        height: 450px;
+        max-height: 95%;
+    }
+    .controls{
+        flex-wrap: wrap;
+    }
+    .spacing1{
+        height: 0;
+        max-width: 0;
     }
 }
 
@@ -397,9 +418,10 @@ input[type=checkbox] {
         max-width: 95%; */
         min-width: 185px;
         min-height: 353.84px;
-        width: 100%;
+        width: 97.5%;
         height: auto;
         padding: 0;
+        padding-left: 10px;
     }
     .controls{
         flex-wrap: wrap;
