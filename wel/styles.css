@@ -269,8 +269,9 @@ canvas {
 .tabs button {
     flex: 1;
     padding: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
-    font-weight: bold;
+    font-weight: 500;
     line-height: 1em;
     cursor: pointer;
     background-color: transparent;
@@ -280,7 +281,7 @@ canvas {
     color: #DCDCDC;
 }
 .tabs button.active {
-    font-weight: bold;
+    font-weight: 500;
     color: #FFFFFF;
 }
 .tabs button span {
@@ -301,10 +302,11 @@ canvas {
 .entry-box {
     margin-left: auto;
     text-align: left;
-    margin-top: 30px;
+    margin-top: 10px;
     margin-right: 15px;
     min-width: 279px;
     min-height: 589px;
+    width: 24%;
 }
 .entry-box textarea {
     width: 450px;
@@ -321,17 +323,17 @@ canvas {
 }
 #entriesCount{
     border-radius: 12px;
-    padding: 2px 6px;
+    padding: 1px 7px;
     background: #777;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
 }
 #resultsCount{
     border-radius: 12px;
-    padding: 2px 6px;
+    padding: 1px 7px;
     background: #777;
     font-weight: normal;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .insideBox {
@@ -363,6 +365,7 @@ canvas {
     color: white;
     border: none;
     padding: 7px 15px;
+    font-weight: bold;
     font-size: 12px;
     cursor: pointer;
     border-radius: 4px;
@@ -430,7 +433,9 @@ input[type=checkbox] {
     height: 210px;
     max-width: 80%;
 }
-
+.controls i{
+    font-size: 15px;
+}
 @media only screen and (max-width: 1008px) { 
     .entry-box{
         margin: 0;
