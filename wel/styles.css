@@ -1,0 +1,435 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212 !important;
+    color: #ffff;
+}
+
+/* ------ NAV STYLES ------ */
+
+header{
+    background-color: #3369E8;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 50px;
+    filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.514));
+    padding: 0;
+}
+
+.logo {
+    height: 38px;
+    border-radius: 50%;
+    margin-right: 10px;
+    padding-left: 10px;
+}
+
+.logo-container{
+    display: flex;
+    align-items: center;
+}
+
+.logo-text {
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 21.3px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #FFFFFF;
+}
+
+.hamburger{
+    display: none !important;
+}
+
+i{
+    margin-right: 5px;
+}
+
+.nav-space{
+    flex-grow: 1;
+}
+
+@media only screen and (max-width: 1077px) { 
+    .logo, nav {
+        display: none !important;
+    }
+
+    .hamburger{
+        display: block !important;
+        margin-right: 15px;
+    }
+
+    .logo-text{
+        margin-left: 15px;
+    }
+}
+
+/* ------ BODY STYLES ------ */
+
+.container{
+    display: flex;
+    width: 100%;
+}
+
+/* PENCIL EDIT BUTTON */
+.circle-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3369E8;
+    color: white;
+    border: none;
+    /* position: fixed;
+    display: flex;
+    top: 65px;
+    left: 15px;
+    align-items: center;
+    justify-content: center; */
+    z-index: 1000;
+    cursor: pointer;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.circle-button i {
+    font-size: 16px;
+}
+
+/* SPIN WHEEL SECTION */
+#wheelCanvas {
+    width: 100%;
+    height: auto;
+    min-height: 323.5px;
+    min-width: 330.5px;
+    filter: drop-shadow(0px 0px 20px rgb(0, 0, 0));
+}
+
+.wheel-container {
+    position: relative;
+    margin-top: 4%;
+    margin-left: 30%;
+}
+
+.curved-text-image {
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    /* width: 500px; */
+    z-index: 10;
+    pointer-events: none;
+    width: 65%;
+    height: auto;
+    max-height: 100%;
+}
+
+canvas {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 27px solid transparent;
+    border-bottom: 27px solid transparent;
+    border-right: 50.8px solid black;
+    filter: drop-shadow(-4px 6px 8px rgba(0, 0, 0, 0.623));
+}
+
+.arrow::before {
+    content: '';
+    position: absolute;
+    top: -27px;
+    left: -2px;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 50px solid #BBBBBB;
+    z-index: -1;
+    transform: translate(2px, 2px);
+    filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.9));
+}
+@media only screen and (max-width: 1526px) and (min-width: 900px) {
+    .curved-text-image{
+        padding-top: 15%;
+        top: auto;
+    }
+
+}
+@media only screen and (max-width: 899px) { 
+    .container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .wheel-container, .curved-text-image{
+        margin-left: 0;
+    }
+
+    #wheelCanvas, .curved-text-image {
+        max-height: 417.5px;
+        max-width: 424.5px;
+    }
+}
+
+@media only screen and (max-width: 470px) { 
+
+    #wheelCanvas, .curved-text-image {
+        max-height: 250px;
+        max-width: 250px;
+    }
+}
+
+/* ENTRIES / RESULT SECTION */
+.tabs {
+    position: relative;
+    display: inline-block;
+}
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 1em;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    color: #DCDCDC;
+}
+.tabs button.active {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.tabs button span {
+    font-weight: bold;
+    margin-left: 5px;
+}
+.underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 50%;
+    background-color: white;
+    transition: left 0.3s ease;
+}
+.tabs #underline {
+    left: 0;
+}
+.entry-box {
+    margin-left: auto;
+    text-align: left;
+    margin-top: 30px;
+    margin-right: 15px;
+    min-width: 279px;
+    min-height: 589px;
+}
+.entry-box textarea {
+    width: 450px;
+    height: 600px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #1D1D1D;
+    resize: none;
+    border: 1px solid;
+    border-color: #777;
+    border-radius: 4px;
+}
+#entriesCount{
+    border-radius: 12px;
+    padding: 2px 6px;
+    background: #777;
+    font-weight: normal;
+    font-size: 14px;
+}
+#resultsCount{
+    border-radius: 12px;
+    padding: 2px 6px;
+    background: #777;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.insideBox {
+    background: #1D1D1D;
+    /* width: 475px;
+    height: 800px; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    height: 94%;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 3px #fff3,0 1px 1px #ffffff24,0 2px 1px -1px #ffffff1f;
+    max-height: 90%;
+}
+
+.controls {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    width: 100%;
+    /* margin-top: 15px; */
+    margin-bottom: 10px;
+    /* margin-left: 27.5px; */
+}
+
+.control-button {
+    background-color: #424242;
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.control-button:hover {
+    background-color: #545454;
+}
+
+.box {
+    display: block;
+    position: relative;
+    padding-left: 20px;
+    cursor: pointer;
+    font-size: 12px;
+  }
+.box p{
+    margin: 0;
+    position: relative;
+    top: 25%;;
+}
+/* Hide the default style of the checkbox */
+input[type=checkbox] {
+    visibility: hidden;
+}
+/* Create a custom checkbox */
+.mark {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    background-color: transparent;
+    border-radius: 2.5px;
+    border: solid 2px #BCBCBC;
+}
+/* Specify the background color for the checkbox while hovering */
+.box:hover input + .mark {
+    background-color: #1c87c9;
+}
+/* Specify the background color for the checkbox when the checkbox is active */
+.box input:active + .mark {
+    background-color: #ffcc00;
+}
+/* Specify the background color for the checkbox when it is checked */
+.box input:checked + .mark {
+    background-color: #3369E8;
+}
+/* Checkmark to be shown in checkbox */
+/* It will not be shown when not checked */
+.mark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Display checkmark when checked */
+.box input:checked + .mark:after {
+    display: block;
+    
+}
+/* Styling the checkmark using webkit */
+/* Rotated the rectangle by 45 degree and showing only two border to make it look like a tick mark */
+.box .mark:after {
+    left: 2px;
+    bottom: 0px;
+    width: 4px;
+    height: 8px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.spacing1{
+    height: 210px;
+    max-width: 80%;
+}
+
+@media only screen and (max-width: 899px) { 
+    .entry-box{
+        margin: 0;
+        height: 600px;
+        width: 867px;
+        max-width: 95%;
+    }
+    .entry-box textarea{
+        width: 800px;
+        max-width: 95%;
+        height: 450px;
+        max-height: 95%;
+    }
+    .controls{
+        flex-wrap: wrap;
+    }
+    .spacing1{
+        height: 0;
+        max-width: 0;
+    }
+}
+
+@media only screen and (min-width: 900px) { 
+    .entry-box textarea{
+        /* width: 800px;
+        max-width: 95%; */
+        min-width: 185px;
+        min-height: 353.84px;
+        width: 97.5%;
+        height: auto;
+        padding: 0;
+        padding-left: 10px;
+    }
+    .controls{
+        flex-wrap: wrap;
+    }
+    .wheel-container{
+        margin-left: 20%;
+    }
+    .container{
+        gap: 50px;
+    }
+}

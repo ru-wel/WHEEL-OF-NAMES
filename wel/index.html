@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wheel of Names</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../image/logo-dark.png" alt="Logo" class="logo">
+            <span class="logo-text">wheelofnames.com</span>
+        </div>
+        <div class="nav-space"></div>
+        <nav>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-palette"></i> Customize</a></li>
+                <li><a href="#"><i class="fas fa-file"></i> New</a></li>
+                <li><a href="#"><i class="fa-solid fa-folder-open"></i> Open</a></li>
+                <li><a href="#"><i class="fa-solid fa-floppy-disk"></i> Save</a></li>
+                <li><a href="#"><i class="fa-solid fa-share-nodes"></i> Share</a></li>
+                <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i> Gallery</a></li>
+                <li><a href="#"><i class="fa-solid fa-expand"></i></a></li>
+                <li><a href="#">More <i class="fa-duotone fa-solid fa-caret-down"></i></a></li>
+                <li><a href="#"><i class="fa-solid fa-globe"></i> English</a></li>
+            </ul>
+        </nav>
+        <i class="fas fa-bars hamburger"></i>
+    </header>
+    
+    <div class="container">
+
+        <button class="circle-button" style="align-self: start;">
+            <i class="fa-solid fa-pencil"></i>
+        </button>
+
+        <div class="wheel-container">
+            <img src="../image/wheel.png" alt="Click to Spin" class="curved-text-image">
+            <canvas id="wheelCanvas" width="500" height="500" onclick="spin()"></canvas>
+            <div class="arrow"></div>
+        </div>
+        
+        <div class="entry-box">
+
+            <div class="tabs-container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="tabs">
+                    <button id="entriesTab" onclick="toggleTab('entries')" class="active">
+                        Entries <span id="entriesCount">0</span>
+                    </button>
+                    <button id="resultsTab" onclick="toggleTab('results')">
+                        Results <span id="resultsCount">0</span>
+                    </button>
+                    <div id="underline" class="underline"></div>
+                </div>
+                <label class="box"><p style="margin-top: 10px;">Hide</p>
+                    <input type="checkbox">
+                    <span class="mark"></span>
+                </label>
+            </div>
+
+            <div class="insideBox">
+                <div class="controls">
+                    <button class="control-button"><i class="fa-solid fa-shuffle"></i> Shuffle</button>
+                    <button class="control-button"><i class="fa-solid fa-arrow-up-a-z"></i> Sort</button>
+                    <button class="control-button"><i class="fa-solid fa-image"></i> Add Image <i class="fa-duotone fa-solid fa-caret-down"></i></button>
+                    <label class="box"><p>Advanced</p>
+                        <input type="checkbox">
+                        <span class="mark"></span>
+                    </label>
+                </div>
+                <div id="entriesBoxContainer">
+                    <textarea id="entriesBox"></textarea>
+                </div>
+                <div id="resultsBoxContainer" style="display: none;">
+                    <textarea id="resultsBox" readonly></textarea>
+                </div>
+                <div class="spacing1"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+}
+
+/* PENCIL EDIT BUTTON */
+.circle-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3369E8;
+    position: fixed;
+    color: white;
+    border: none;
+    display: flex;
+    top: 65px;
+    left: 15px;
+    align-items: center;
+    z-index: 1000;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.circle-button i {
+    font-size: 16px;
+}
+
+/* HEADER SECTION */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3369E8;
+    padding: 6px 15px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    filter: drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.514));
+}
+nav i {
+    margin-right: 5px;
+}
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+.fa-caret-down:before{
+    font-size: 10px;
+    vertical-align: middle;
+    margin-right: -15px;
+    margin-left: 10px;
+}
+.logo {
+    height: 38px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+nav{
+    margin-right: 15px;
+}
+.logo-text {
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 21.3px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 450;
+    font-size: 16px;
+}
+
+nav a:hover {
+    color: #FFFFFF;
+}
+
+/* LAHAT NG NASA BODY SECTION NASA BABA NETO */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+/* SPIN WHEEL SECTION */
+.wheel-container {
+    position: relative;
+    margin-top: 4%;
+    margin-left: 30%;
+}
+.curved-text-image {
+    position: absolute;
+    top: 17.5%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 500px;
+    z-index: 10;
+    pointer-events: none;
+}
+canvas {
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    border-top: 27px solid transparent;
+    border-bottom: 27px solid transparent;
+    border-right: 50.8px solid black;
+    filter: drop-shadow(-4px 6px 8px rgba(0, 0, 0, 0.623));
+}
+.arrow::before {
+    content: '';
+    position: absolute;
+    top: -27px;
+    left: -2px;
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 50px solid #BBBBBB;
+    z-index: -1;
+    transform: translate(2px, 2px);
+    filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.9));
+}
+
+/* ENTRIES / RESULT SECTION */
+.tabs {
+    position: relative;
+    display: inline-block;
+}
+.tabs button {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.715em;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    position: relative;
+    color: #DCDCDC;
+}
+.tabs button.active {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+.tabs button span {
+    font-weight: bold;
+    margin-left: 5px;
+}
+.underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 50%;
+    background-color: white;
+    transition: left 0.3s ease;
+}
+.tabs #underline {
+    left: 0;
+}
+.entry-box {
+    margin-left: auto;
+    text-align: left;
+    margin-top: 30px;
+    margin-right: 15px;
+}
+.entry-box textarea {
+    width: 450px;
+    height: 600px;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #1D1D1D;
+    resize: none;
+    border: 1px solid;
+    border-color: #777;
+    border-radius: 4px;
+}
+#entriesCount{
+    border-radius: 12px;
+    padding: 2px 6px;
+    background: #777;
+    font-weight: normal;
+    font-size: 14px;
+}
+#resultsCount{
+    border-radius: 12px;
+    padding: 2px 6px;
+    background: #777;
+    font-weight: normal;
+    font-size: 14px;
+}
+
+.insideBox {
+    background: #1D1D1D;
+    width: 475px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.controls {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    margin-left: 27.5px;
+}
+
+.control-button {
+    background-color: #424242;
+    color: white;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.control-button:hover {
+    background-color: #545454;
+}
+
+.checkbox-label {
+    color: #DCDCDC;
+    display: flex;
+    align-items: center;
+}
+
+.advanced-checkbox {
+    margin-right: 5px;
+}
+
+textarea {
+    height: 600px;
+    max-width: 425px;
+    padding: 10px;
+    font-size: 16px;
+    color: #FFFFFF;
+    background: #1D1D1D;
+    resize: none;
+    border: 1px solid;
+    border-color: #777;
+    border-radius: 4px;
+    margin-top: 10px;
+}
