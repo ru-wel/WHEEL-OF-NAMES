@@ -228,8 +228,20 @@ function selectWinner() {
     const adjustedAngle = (spinAngle % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
     const winningIndex = Math.floor((names.length - adjustedAngle / segmentAngle) % names.length);
     const winner = names[winningIndex];
+    const modalHeader = document.querySelector(".modal-header");
+    const modalTitle = document.querySelector(".message");
 
     winners.push(winner);
+    const lowerCaseWinner = winner.toLowerCase();
+    if (lowerCaseWinner === "dark") {
+        modalHeader.style.backgroundColor = "#000000";
+        modalTitle.style.color = "#FFFFFF";
+    }
+    else{
+        modalHeader.style.backgroundColor = "#FFFFFF";
+        modalTitle.style.color = "#000000";
+    }
+    
     document.getElementById("winnerMessage").innerText = winner;
     document.getElementById("winnerModal").style.display = "flex";
     updateResultsBox();
