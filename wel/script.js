@@ -230,6 +230,8 @@ function selectWinner() {
     const winner = names[winningIndex];
 
     winners.push(winner);
+    document.getElementById("winnerMessage").innerText = winner;
+    document.getElementById("winnerModal").style.display = "flex";
     updateResultsBox();
     updateWinnerCount();
 
@@ -237,6 +239,10 @@ function selectWinner() {
         isSelectingWinner = false;
         spinning = false;
     }, 100);
+}
+
+function closeModal() {
+    document.getElementById("winnerModal").style.display = "none";
 }
 
 function drawWheelAtAngle(angle) {

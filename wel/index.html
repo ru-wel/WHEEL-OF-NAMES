@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wheel of Names</title>
+    <title>Wheel of Names | Random name picker</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="../image/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
@@ -12,7 +13,7 @@
 <body>
     <header>
         <div class="logo-container">
-            <img src="../image/logo-dark.png" alt="Logo" class="logo">
+            <img src="../image/favicon-32x32.png" alt="Logo" class="logo">
             <span class="logo-text">wheelofnames.com</span>
         </div>
         <div class="nav-space"></div>
@@ -80,6 +81,22 @@
                 </div>
                 <div class="spacing1"></div>
             </div>
+        </div>
+    </div>
+
+    <div id="winnerModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="message" style="color: #333;">We have a winner!</span>
+            <span class="close-button" onclick="closeModal()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <p id="winnerMessage" style="margin: 0;"></p>
+          </div>
+          <div class="modal-footer">
+            <button class="closebutton" onclick="closeModal()">Close</button>
+            <button class="removebutton">Remove</button>
+          </div>
         </div>
     </div>
 
