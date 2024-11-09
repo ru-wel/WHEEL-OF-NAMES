@@ -178,14 +178,40 @@ canvas {
     transform: translate(2px, 2px);
     filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.9));
 }
+
+    
+
 @media only screen and (max-width: 1526px) and (min-width: 900px) {
     .curved-text-image{
         padding-top: 15%;
         top: auto;
     }
+    .wheel-container {
+        position: relative;
+        margin-top: 4%;
+        margin-left: 20%;
+        padding-top: 5%;
+    }
+    #wheelCanvas{
+        height: 622.42px;
+        width: auto;
+    }
+    
+    .arrow {
+        border-top: calc(27px * 0.85) solid transparent;
+        border-bottom: calc(27px * 0.85) solid transparent;
+        border-right: calc(50.8px * 0.85) solid black;
+    }
+    
+    .arrow::before {
+        top: calc(-27px * 0.85);
+        border-top: calc(25px * 0.85) solid transparent;
+        border-bottom: calc(25px * 0.85) solid transparent;
+        border-right: calc(50px * 0.85) solid #BBBBBB;
+    }
 
 }
-@media only screen and (max-width: 899px) { 
+@media only screen and (max-width: 1008px) and (min-width: 320px) { 
     .container{
         flex-direction: column;
         justify-content: center;
@@ -200,6 +226,19 @@ canvas {
         max-height: 417.5px;
         max-width: 424.5px;
     }
+    .arrow {
+        border-top: calc(27px * 0.65) solid transparent;
+        border-bottom: calc(27px * 0.65) solid transparent;
+        border-right: calc(50.8px * 0.65) solid black;
+        top: 50%;
+    }
+    
+    .arrow::before {
+        top: calc(-27px * 0.65);
+        border-top: calc(25px * 0.65) solid transparent;
+        border-bottom: calc(25px * 0.65) solid transparent;
+        border-right: calc(50px * 0.65) solid #BBBBBB;
+    }
 }
 
 @media only screen and (max-width: 470px) { 
@@ -207,6 +246,18 @@ canvas {
     #wheelCanvas, .curved-text-image {
         max-height: 250px;
         max-width: 250px;
+    }
+    .arrow {
+        border-top: calc(27px * 0.4) solid transparent;
+        border-bottom: calc(27px * 0.4) solid transparent;
+        border-right: calc(50.8px * 0.4) solid black;
+    }
+    
+    .arrow::before {
+        top: calc(-27px * 0.4);
+        border-top: calc(25px * 0.4) solid transparent;
+        border-bottom: calc(25px * 0.4) solid transparent;
+        border-right: calc(50px * 0.4) solid #BBBBBB;
     }
 }
 
@@ -333,11 +384,9 @@ canvas {
     position: relative;
     top: 25%;;
 }
-/* Hide the default style of the checkbox */
 input[type=checkbox] {
     visibility: hidden;
 }
-/* Create a custom checkbox */
 .mark {
     position: absolute;
     top: 25%;
@@ -348,32 +397,24 @@ input[type=checkbox] {
     border-radius: 2.5px;
     border: solid 2px #BCBCBC;
 }
-/* Specify the background color for the checkbox while hovering */
 .box:hover input + .mark {
     background-color: #1c87c9;
 }
-/* Specify the background color for the checkbox when the checkbox is active */
 .box input:active + .mark {
     background-color: #ffcc00;
 }
-/* Specify the background color for the checkbox when it is checked */
 .box input:checked + .mark {
     background-color: #3369E8;
 }
-/* Checkmark to be shown in checkbox */
-/* It will not be shown when not checked */
 .mark:after {
     content: "";
     position: absolute;
     display: none;
 }
-/* Display checkmark when checked */
 .box input:checked + .mark:after {
     display: block;
     
 }
-/* Styling the checkmark using webkit */
-/* Rotated the rectangle by 45 degree and showing only two border to make it look like a tick mark */
 .box .mark:after {
     left: 2px;
     bottom: 0px;
@@ -390,7 +431,7 @@ input[type=checkbox] {
     max-width: 80%;
 }
 
-@media only screen and (max-width: 899px) { 
+@media only screen and (max-width: 1008px) { 
     .entry-box{
         margin: 0;
         height: 600px;
@@ -412,7 +453,7 @@ input[type=checkbox] {
     }
 }
 
-@media only screen and (min-width: 900px) { 
+@media only screen and (min-width: 1009px) { 
     .entry-box textarea{
         /* width: 800px;
         max-width: 95%; */
@@ -427,9 +468,28 @@ input[type=checkbox] {
         flex-wrap: wrap;
     }
     .wheel-container{
-        margin-left: 20%;
+        margin-left: auto;
     }
     .container{
         gap: 50px;
+    }
+}
+@media only screen and (max-width: 1008px) and (min-width: 900px) { 
+    #wheelCanvas{
+        max-height: 550px;
+        max-width: 550px;
+    }
+}
+@media only screen and (max-width: 1060px) and (min-width: 1009px) { 
+    .tabs-container .box{
+        display: none;
+    }
+    .entry-box{
+        min-width: auto;
+    }
+}
+@media only screen and (min-width: 1799px) {
+    .wheel-container{
+        margin-left: 30%;
     }
 }
