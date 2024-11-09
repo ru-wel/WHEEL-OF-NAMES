@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wheel of Names</title>
+    <link rel="icon" type="image/x-icon" href="../image/favicon.png">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -80,6 +81,22 @@
                 </div>
                 <div class="spacing1"></div>
             </div>
+        </div>
+    </div>
+
+    <div id="winnerModal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <span class="message" style="color: #333;">We have a winner!</span>
+            <span class="close-button" onclick="closeModal()">&times;</span>
+          </div>
+          <div class="modal-body">
+            <p id="winnerMessage" style="margin: 0;"></p>
+          </div>
+          <div class="modal-footer">
+            <button class="closebutton" onclick="closeModal()">Close</button>
+            <button class="removebutton">Remove</button>
+          </div>
         </div>
     </div>
 
