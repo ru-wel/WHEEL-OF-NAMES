@@ -79,6 +79,11 @@ i{
 
     .hamburger{
         display: block !important;
+        margin-right: 15px;
+    }
+
+    .logo-text{
+        margin-left: 15px;
     }
 }
 
@@ -95,16 +100,18 @@ i{
     height: 40px;
     border-radius: 50%;
     background-color: #3369E8;
-    position: fixed;
     color: white;
     border: none;
+    /* position: fixed;
     display: flex;
     top: 65px;
     left: 15px;
     align-items: center;
+    justify-content: center; */
     z-index: 1000;
-    justify-content: center;
     cursor: pointer;
+    margin-left: 15px;
+    margin-top: 15px;
 }
 
 .circle-button i {
@@ -198,7 +205,7 @@ canvas {
     padding: 10px;
     font-size: 16px;
     font-weight: bold;
-    line-height: 1.715em;
+    line-height: 1em;
     cursor: pointer;
     background-color: transparent;
     border: none;
@@ -276,9 +283,9 @@ canvas {
     justify-content: left;
     gap: 10px;
     width: 100%;
-    margin-top: 15px;
+    /* margin-top: 15px; */
     margin-bottom: 10px;
-    margin-left: 27.5px;
+    /* margin-left: 27.5px; */
 }
 
 .control-button {

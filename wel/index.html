@@ -34,7 +34,7 @@
     
     <div class="container">
 
-        <button class="circle-button">
+        <button class="circle-button" style="align-self: start;">
             <i class="fa-solid fa-pencil"></i>
         </button>
 
@@ -45,15 +45,23 @@
         </div>
         
         <div class="entry-box">
-            <div class="tabs">
-                <button id="entriesTab" onclick="toggleTab('entries')" class="active">
-                    Entries <span id="entriesCount">0</span>
-                </button>
-                <button id="resultsTab" onclick="toggleTab('results')">
-                    Results <span id="resultsCount">0</span>
-                </button>
-                <div id="underline" class="underline"></div>
+
+            <div class="tabs-container" style="display: flex; justify-content: space-between; align-items: center;">
+                <div class="tabs">
+                    <button id="entriesTab" onclick="toggleTab('entries')" class="active">
+                        Entries <span id="entriesCount">0</span>
+                    </button>
+                    <button id="resultsTab" onclick="toggleTab('results')">
+                        Results <span id="resultsCount">0</span>
+                    </button>
+                    <div id="underline" class="underline"></div>
+                </div>
+                <label class="box"><p style="margin-top: 10px;">Hide</p>
+                    <input type="checkbox">
+                    <span class="mark"></span>
+                </label>
             </div>
+
             <div class="insideBox">
                 <div class="controls">
                     <button class="control-button"><i class="fa-solid fa-shuffle"></i> Shuffle</button>
