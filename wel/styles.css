@@ -245,6 +245,8 @@ canvas {
     text-align: left;
     margin-top: 30px;
     margin-right: 15px;
+    min-width: 279px;
+    min-height: 589px;
 }
 .entry-box textarea {
     width: 450px;
@@ -387,9 +389,25 @@ input[type=checkbox] {
         width: 800px;
         max-width: 95%;
     }
-    .entriesBoxContainer{
+}
+
+@media only screen and (min-width: 900px) { 
+    .entry-box textarea{
+        /* width: 800px;
+        max-width: 95%; */
+        min-width: 185px;
+        min-height: 353.84px;
+        width: 100%;
+        height: auto;
+        padding: 0;
     }
-
-    
-
+    .controls{
+        flex-wrap: wrap;
+    }
+    .wheel-container{
+        margin-left: 20%;
+    }
+    .container{
+        gap: 50px;
+    }
 }
