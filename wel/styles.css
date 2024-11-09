@@ -195,6 +195,14 @@ canvas {
     }
 }
 
+@media only screen and (max-width: 470px) { 
+
+    #wheelCanvas, .curved-text-image {
+        max-height: 250px;
+        max-width: 250px;
+    }
+}
+
 /* ENTRIES / RESULT SECTION */
 .tabs {
     position: relative;
